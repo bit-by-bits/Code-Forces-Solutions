@@ -1,2 +1,10 @@
-# Code-Forces-Solutions
-Simple c++ codes for ease-to-medium level codeforces questions.
+### Code-Forces-Solutions
+Beginner c++ codes for ease-to-medium level codeforces practice questions. <br>
+Initially created to track my own competitive programming journey.
+
+### How To Use
+1. Clone the repository to a local system.
+2. Refer to the code inside by matching the particular file names with CodeForces questions.
+
+<strong>Note :</strong> You might even view it online on [GitHub](https://github.com/bit-by-bits/Code-Forces-Solutions). <br>
+Also, a better approach is to read the code halfway and take hints to solve it instead of copying it directly.
