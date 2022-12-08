@@ -1,34 +1,39 @@
 #include <iostream>
-#include <algorithm>
 #define int long long
 using namespace std;
+
+int check(int n, string arr[], string a)
+{
+    for (int i = 0; i <= n; i++) if (a == arr[i]) return i;
+    
+    return -1;
+}
 
 int32_t main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n, last = 0, index = 0;
-    cin >> n;
+    int t;
+    cin >> t;
 
-    string words[n], extra[n];
-    for (int i = 0; i < n; i++)
-        cin >> words[i];
-    sort(words, words + n);
+    string arr[t], temp[t];
+    int index = 0, extra[t] = {0};
+    for (int i = 0; i < t; i++) cin >> arr[i];
 
-    extra[0] = words[0];
-    cout << "OK" << '\n';
-    for (int a = 1; a < n; a++)
+    for (int i = 0; i < t; i++)
     {
-        if ((words[a] == words[a - 1]) && (words[a] != extra[index]))
+        int checked = check(index, temp, arr[i]);
+
+        if (checked != -1)
         {
-            cout << words[0] + (char)(47 + a - last) << '\n';
+            extra[checked]++;
+            cout << arr[i] << extra[checked] << '\n';
         }
         else
         {
-            extra[++index] = words[a];
+            temp[++index] = arr[i];
             cout << "OK" << '\n';
-            last = a;
         }
     }
 
