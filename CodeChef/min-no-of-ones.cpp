@@ -16,7 +16,7 @@ int32_t main()
     for (int i = 0; i < T; i++)
     {
         cin >> arr[i];
-        
+        cout << arr[i] / 2 << '\n';
     }
 
     return 0;

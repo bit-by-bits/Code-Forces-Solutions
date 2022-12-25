@@ -12,11 +12,12 @@ int32_t main()
     int T;
     cin >> T;
 
-    int arr[T];
     for (int i = 0; i < T; i++)
     {
-        cin >> arr[i];
-        
+
+        int n, x;
+        cin >> n >> x;
+        cout << pow(2, x - n) << '\n';
     }
 
     return 0;
