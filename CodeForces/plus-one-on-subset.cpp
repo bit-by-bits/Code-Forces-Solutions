@@ -14,11 +14,15 @@ int32_t main()
 
     while (t--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        int n;
+        cin >> n;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        int arr[n];
+        for (int i = 0; i < n; i++)
+            cin >> arr[i];
+
+        sort(arr, arr + n);
+        cout << arr[n - 1] - arr[0] << '\n';
     }
 
     return 0;

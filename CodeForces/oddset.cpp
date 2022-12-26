@@ -14,11 +14,20 @@ int32_t main()
 
     while (t--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        int n, odd = 0;
+        cin >> n;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        int limit = 2 * n;
+        while (limit--)
+        {
+            int a;
+            cin >> a;
+
+            if (a % 2)
+                odd++;
+        }
+
+        cout << ((odd == n) ? "Yes" : "No") << '\n';
     }
 
     return 0;

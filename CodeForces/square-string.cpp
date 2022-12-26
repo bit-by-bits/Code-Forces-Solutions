@@ -14,11 +14,10 @@ int32_t main()
 
     while (t--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        string s;
+        cin >> s;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        cout << (!(s.length() % 2) && !(s.substr(0, s.length() / 2).compare(s.substr(s.length() / 2, s.length() / 2))) ? "YES" : "NO") << '\n';
     }
 
     return 0;

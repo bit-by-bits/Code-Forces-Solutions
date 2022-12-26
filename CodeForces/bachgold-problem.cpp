@@ -9,17 +9,22 @@ int32_t main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
+    int n;
+    cin >> n;
 
-    while (t--)
+    const int ans = n / 2;
+    cout << ans << '\n';
+
+    if (n % 2)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
-
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        for (int a = 0; a < ans - 1; a++)
+            cout << 2 << ' ';
+        cout << 3;
     }
-
+    else
+    {
+        for (int a = 0; a < ans; a++)
+            cout << 2 << ' ';
+    }
     return 0;
 }

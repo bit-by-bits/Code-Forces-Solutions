@@ -14,11 +14,21 @@ int32_t main()
 
     while (t--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        int n;
+        cin >> n;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        int one = 0, two = 0;
+        while (n--)
+        {
+            int s;
+            cin >> s;
+            (s == 1) ? one++ : two++;
+        }
+
+        if ((one == 0 && two % 2) || (one % 2))
+            cout << "NO" << '\n';
+        else
+            cout << "YES" << '\n';
     }
 
     return 0;

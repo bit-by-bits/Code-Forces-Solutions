@@ -9,17 +9,20 @@ int32_t main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
+    string s;
+    cin >> s;
 
-    while (t--)
+    char pointer = 'a';
+    int limit = s.length(), ans = 0;
+    for (int a = 0; a < limit; a++)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        const int diff = abs(pointer - s[a]);
+        if (diff < 13) ans += diff;
+        else ans += 26 - diff;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        pointer = s[a];
     }
-
+    
+    cout << ans << '\n';
     return 0;
 }

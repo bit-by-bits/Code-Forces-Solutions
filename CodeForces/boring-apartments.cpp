@@ -14,11 +14,11 @@ int32_t main()
 
     while (t--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        string x;
+        cin >> x;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        const int limit = x[0] - '0' - 1;
+        cout << (10 * limit) + ((x.length()) * (x.length() + 1) / 2) << '\n';
     }
 
     return 0;

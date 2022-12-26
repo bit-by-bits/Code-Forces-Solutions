@@ -9,16 +9,20 @@ int32_t main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
+    int T;
+    cin >> T;
 
-    while (t--)
+    while (T--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        double n, x, floor;
+        cin >> n >> x;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        if (n == 1.0 || n == 2.0)
+            floor = 1;
+        else
+            floor = ceil((n - 2.0) / x) + 1;
+
+        cout << fixed << setprecision(0) << floor << '\n';
     }
 
     return 0;

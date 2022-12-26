@@ -14,11 +14,9 @@ int32_t main()
 
     while (t--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
-
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        int n;
+        cin >> n;
+        cout << pow(2, n / 2 + 1) - 2 << '\n';
     }
 
     return 0;

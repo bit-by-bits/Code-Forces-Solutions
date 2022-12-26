@@ -14,11 +14,12 @@ int32_t main()
 
     while (t--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        int arr[3];
+        for (int i = 0; i < 3; i++)
+            cin >> arr[i];
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        sort(arr, arr + 3);
+        cout << ((arr[2] == arr[0] + arr[1]) ? "YES" : "NO") << '\n';
     }
 
     return 0;

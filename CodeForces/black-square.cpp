@@ -9,17 +9,15 @@ int32_t main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
+    int arr[4], temp = 0;
+    cin >> arr[0] >> arr[1] >> arr[2] >> arr[3];
 
-    while (t--)
-    {
-        int x, y, n;
-        cin >> x >> y >> n;
+    string s;
+    cin >> s;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
-    }
+    for (int a = 0; a < s.length(); a++)
+        temp += arr[(int)(s[a] - '1')];
 
+    cout << temp << '\n';
     return 0;
 }

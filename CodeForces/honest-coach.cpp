@@ -14,11 +14,19 @@ int32_t main()
 
     while (t--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        int n;
+        cin >> n;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        int temp[n], diff = 10000;
+        for (int i = 0; i < n; i++)
+            cin >> temp[i];
+
+        sort(temp, temp + n);
+        for (int i = 1; i < n; i++)
+            if (temp[i] - temp[i - 1] < diff)
+                diff = temp[i] - temp[i - 1];
+        
+        cout << diff << '\n';
     }
 
     return 0;

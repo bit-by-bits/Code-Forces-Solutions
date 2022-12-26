@@ -9,16 +9,24 @@ int32_t main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
+    int T;
+    cin >> T;
 
-    while (t--)
+    while (T--)
     {
-        int x, y, n;
-        cin >> x >> y >> n;
+        int s, x;
+        cin >> s;
 
-        const int limit = n % x;
-        cout << ((limit >= y) ? (n - limit + y) : (n - limit - x + y)) << '\n';
+        if (s >= 1900)
+            x = 1;
+        else if (s >= 1600)
+            x = 2;
+        else if (s >= 1400)
+            x = 3;
+        else
+            x = 4;
+
+        cout << "Division " << x << '\n';
     }
 
     return 0;
