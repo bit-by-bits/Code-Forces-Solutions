@@ -9,7 +9,15 @@ int32_t main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    i
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        int x;
+        cin >> x;
+        cout << x - 1 << ' ' << 1 << '\n';
+    }
 
     return 0;
 }

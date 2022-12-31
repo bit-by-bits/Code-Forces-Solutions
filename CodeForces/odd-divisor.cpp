@@ -9,7 +9,21 @@ int32_t main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    i
+    int T;
+    cin >> T;
+
+    while (T--)
+    {
+        int s, index = 0;
+        cin >> s;
+
+        while (s % 2 == 0)
+            s /= 2;
+        if (s == 1)
+            cout << "NO" << '\n';
+        else
+            cout << "YES" << '\n';
+    }
 
     return 0;
 }

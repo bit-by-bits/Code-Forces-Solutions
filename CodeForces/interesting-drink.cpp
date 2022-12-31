@@ -1,50 +1,45 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
+#define int long long
+#define vi vector<int>
+#define rep(start, end, x) for (auto x = (start) - ((start) > (end)); x != (end) - ((start) > (end)); ((start) < (end) ? x++ : x--))
 using namespace std;
 
-int look(int arr[], int start, int end, int key)
+int32_t main()
 {
-    if (end >= start)
-    {
-        int mid = (start + end) / 2;
-        cout << mid << ' ';
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-        if (arr[mid] == key)
-            return mid + 1;
-        if (arr[mid] > key)
-            return look(arr, start, mid - 1, key);
-        else
-            return look(arr, mid + 1, end, key);
-    }
-
-    return -1;
-}
-
-int main()
-{
     int n;
     cin >> n;
 
-    int sell[n];
+    vi x(n);
     for (int i = 0; i < n; i++)
-        cin >> sell[i];
+        cin >> x[i];
+    sort(x.begin(), x.end());
 
     int q;
     cin >> q;
-    int spend[q];
 
-    sort(sell, sell + n);
-    for (int i = 0; i < q; i++)
-        cin >> spend[i];
-
-    for (int i = 0; i < q; i++)
+    while (q--)
     {
-        int ans = look(sell, 0, n - 1, spend[i]);
+        int m;
+        cin >> m;
 
-        // if (ans == -1)
-        //     cout << endl << spend[i] << ' ' << q;
-        // else
-        //     cout << endl << spend[i] << ' ' << ans;
+        auto ans = upper_bound(x.begin(), x.end(), m);
+
+        if (m < x[0])
+        {
+            cout << 0 << '\n';
+            continue;
+        }
+
+        if (m >= x[n - 1])
+        {
+            cout << n << '\n';
+            continue;
+        }
+
+        cout << ans - x.begin() << '\n';
     }
 
     return 0;
