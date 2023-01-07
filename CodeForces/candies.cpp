@@ -22,26 +22,19 @@ int32_t main()
     }
 
     int key = 2, value = 0;
-    while (true)
+    while (key * 2 - 1 <= max)
     {
-        if ((key * 2) > max)
-            break;
-        else
-        {
-            key *= 2;
-            m[++value] = key - 1;
-        }
+        key *= 2;
+        m[++value] = key - 1;
     }
 
     for (int i = 0; i < t; i++)
-    {
         for (int j = 1; j <= value; j++)
             if (arr[i] % m[j] == 0)
             {
                 cout << arr[i] / m[j] << '\n';
                 break;
             }
-    }
 
     return 0;
 }
