@@ -34,3 +34,5 @@
 # Others
 *.bin
 *.cph
+
+.vscode
