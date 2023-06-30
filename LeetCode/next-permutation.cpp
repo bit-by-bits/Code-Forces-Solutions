@@ -3,29 +3,35 @@ class Solution
 public:
     void nextPermutation(vector<int> &nums)
     {
-        int n = nums.size(), k, l;
-        for (k = n - 2; k >= 0; k--)
+
+        int SIZE = nums.size();
+        int pivot = -1;
+
+        for (int i = SIZE - 1; i > 0; i--)
         {
-            if (nums[k] < nums[k + 1])
+            if (nums[i - 1] < nums[i])
             {
+                pivot = i - 1;
                 break;
             }
         }
-        if (k < 0)
+
+        if (pivot != -1)
         {
-            reverse(nums.begin(), nums.end());
-        }
-        else
-        {
-            for (l = n - 1; l > k; l--)
+            nums.push_back(INT_MIN);
+            for (int i = pivot + 1; i < SIZE; i++)
             {
-                if (nums[l] > nums[k])
+                if (nums[i] >= nums[pivot] && nums[i + 1] <= nums[pivot])
                 {
+                    swap(nums[pivot], nums[i]);
                     break;
                 }
             }
-            swap(nums[k], nums[l]);
-            reverse(nums.begin() + k + 1, nums.end());
+
+            nums.pop_back();
         }
+
+        reverse(nums.begin() + pivot + 1, nums.end());
+        return;
     }
 };
