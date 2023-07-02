@@ -1,49 +1,63 @@
 class Solution
 {
 public:
+    int first(vector<int> arr, int x)
+    {
+
+        int str = 0;
+        int end = arr.size() - 1;
+
+        int mid = 0;
+        int ret = -1;
+
+        while (str <= end)
+        {
+            mid = str + (end - str) / 2;
+
+            if (arr[mid] < x)
+                str = mid + 1;
+            else
+            {
+                if (x == arr[mid])
+                    ret = mid;
+                end = mid - 1;
+            }
+        }
+
+        return ret;
+    }
+
+    int last(vector<int> arr, int s, int x)
+    {
+
+        int str = max(0, s);
+        int end = arr.size() - 1;
+
+        int mid = 0;
+        int ret = -1;
+
+        while (str <= end)
+        {
+            mid = str + (end - str) / 2;
+
+            if (x < arr[mid])
+                end = mid - 1;
+            else
+            {
+                if (arr[mid] == x)
+                    ret = mid;
+                str = mid + 1;
+            }
+        }
+
+        return ret;
+    }
+
     vector<int> searchRange(vector<int> &arr, int key)
     {
-        int start = 0, end = arr.size() - 1;
-        vector<int> ans(2, -1);
+        int str = first(arr, key);
+        int end = last(arr, str, key);
 
-        if (arr.empty() || key < arr[start] || arr[end] < key)
-            return ans;
-
-        while (start < end)
-        {
-            int mid = (start + end) / 2;
-
-            if (arr[mid] > key)
-                end = mid - 1;
-            else if (arr[mid] < key)
-                start = mid + 1;
-            else
-                end = mid;
-
-            cout << " KEY " << key << " START " << start << " MID " << arr[mid] << " END " << end << '\n';
-        }
-
-        ans[0] = end;
-        start = 0;
-        end = arr.size() - 1;
-
-        while (start < end)
-        {
-            int mid = (start + end + 1) / 2;
-
-            if (arr[mid] > key)
-                end = mid - 1;
-            else if (arr[mid] < key)
-                start = mid + 1;
-            else
-                start = mid;
-            cout << " KEY " << key << " START " << start << " MID " << arr[mid] << " END " << end << '\n';
-        }
-
-        ans[1] = start;
-
-        if (arr[ans[0]] != key || arr[ans[1]] != key)
-            ans = {-1, -1};
-        return ans;
+        return {str, end};
     }
 };

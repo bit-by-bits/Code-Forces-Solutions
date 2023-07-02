@@ -1,25 +1,24 @@
 class Solution
 {
 public:
-    int search(vector<int> &arr, int target)
+    int searchInsert(vector<int> &arr, int key)
     {
-
         int str = 0;
-        int mid = 0;
         int end = arr.size() - 1;
+        int mid = 0;
 
         while (str <= end)
         {
-
             mid = str + (end - str) / 2;
 
-            if (arr[mid] < target)
+            if (arr[mid] < key)
                 str = mid + 1;
-            else if (target < arr[mid])
+            else if (key < arr[mid])
                 end = mid - 1;
             else
                 return mid;
         }
 
-        return -1;
+        return str;
     }
+};
