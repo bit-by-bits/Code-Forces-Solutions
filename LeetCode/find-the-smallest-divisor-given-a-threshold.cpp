@@ -1,39 +1,34 @@
 class Solution
 {
 public:
-    bool check(vector<int> piles, int mid, int h)
+    bool check(vector<int> nums, int mid, int threshold)
     {
 
-        long long int hours = 0;
-        int SIZE = piles.size();
+        int count = 0;
+        int SIZE = nums.size();
 
         for (int i = 0; i < SIZE; i++)
         {
-
-            if (piles[i] <= mid)
-                hours++;
-            else
-                hours += ceil(piles[i] / (double)mid);
-
-            if (hours > h)
+            count += ceil(nums[i] / (double)mid);
+            if (count > threshold)
                 return false;
         }
 
         return true;
     }
 
-    int minEatingSpeed(vector<int> &piles, int h)
+    int smallestDivisor(vector<int> &nums, int threshold)
     {
 
         int str = 1;
-        int end = *max_element(piles.begin(), piles.end());
+        int end = *max_element(nums.begin(), nums.end());
 
         int res = end;
         while (str <= end)
         {
 
             int mid = str + (end - str) / 2;
-            if (check(piles, mid, h))
+            if (check(nums, mid, threshold))
             {
                 res = mid;
                 end = mid - 1;

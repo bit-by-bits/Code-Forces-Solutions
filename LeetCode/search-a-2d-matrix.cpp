@@ -5,7 +5,6 @@ public:
     {
         const int M = matrix.size();
         const int N = matrix[0].size();
-        cout << "M:" << M << " N:" << N << endl;
 
         int row = -1;
 
