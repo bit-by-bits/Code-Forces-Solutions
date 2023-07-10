@@ -8,20 +8,13 @@ private:
         {
             if (str.size())
                 ans.push_back(str);
-            return;
         }
 
         else
         {
-            const int DIGIT = digits[index] - '0';
+            int DIGIT = digits[index] - '0';
             for (int j = 0; j < s[DIGIT].length(); j++)
-            {
-
-                string newStr = str;
-                newStr.push_back(s[DIGIT][j]);
-
-                solve(digits, index + 1, newStr, s, ans);
-            }
+                solve(digits, index + 1, str + s[DIGIT][j], s, ans);
         }
     }
 
@@ -33,8 +26,8 @@ public:
 
         int index = 0;
         vector<string> ans;
-
         solve(digits, index, str, s, ans);
+
         return ans;
     }
 };
