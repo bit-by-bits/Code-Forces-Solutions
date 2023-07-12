@@ -3,16 +3,51 @@ class Solution
 public:
     double myPow(double x, int n)
     {
-        if (n == INT_MAX)
-            return (abs((int)x) == 1) ? x : 0;
-        if (n == INT_MIN)
-            return (abs((int)x) == 1) ? 1 : 0;
 
-        if (n == 0)
-            return 1.0;
-        else if (n < 0)
-            return 1.0 / myPow(x, -n);
-        else
-            return x * myPow(x, n - 1);
+        if (n < 0)
+            x = 1 / x;
+
+        double pow = 1;
+        long num = labs(n);
+
+        while (num)
+        {
+            if (num & 1)
+                pow *= x;
+
+            x *= x;
+            num >>= 1;
+        }
+
+        return pow;
     }
 };
+
+// class Solution
+// {
+// public:
+//     double myPow(double x, int n)
+//     {
+
+//         if (!n)
+//         {
+//             return 1;
+//         }
+
+//         else if (n > 0)
+//         {
+//             if (n & 1)
+//                 return x * myPow(x * x, n / 2);
+//             else
+//                 return myPow(x * x, n / 2);
+//         }
+
+//         else
+//         {
+//             if (n == INT_MIN)
+//                 return 1.0 / x * myPow(x, INT_MAX);
+//             else
+//                 return 1.0 / myPow(x, -n);
+//         }
+//     }
+// };

@@ -1,29 +1,40 @@
 class Solution
 {
 public:
-    void generate(int i, vector<int> nums, vector<int> curr, vector<vector<int>> &ans)
+    void subs(int idx, vector<int> nums, vector<int> curr, vector<vector<int>> &ans)
     {
 
-        if (i == nums.size())
-        {
+        if (idx == nums.size())
             ans.push_back(curr);
-            return;
+        else
+        {
+            subs(idx + 1, nums, curr, ans);
+            curr.push_back(nums[idx]);
+            subs(idx + 1, nums, curr, ans);
         }
-
-        generate(i + 1, nums, curr, ans);
-        curr.push_back(nums[i]);
-        generate(i + 1, nums, curr, ans);
-
-        return;
     }
 
     vector<vector<int>> subsets(vector<int> &nums)
     {
 
         vector<int> curr;
-        vector<vector<int>> ret;
-        generate(0, nums, curr, ret);
+        vector<vector<int>> ans;
 
-        return ret;
+        // int M = nums.size();
+        // int N = 1 << M;
+
+        // for (int i = 0; i < N; i++) {
+        //     for (int j = 0; j < M; j++) {
+        //         if (i & (1 << j)) {
+        //             curr.push_back(nums[j]);
+        //         }
+        //     }
+
+        //     ans.push_back(curr);
+        //     curr = {};
+        // }
+
+        subs(0, nums, curr, ans);
+        return ans;
     }
 };

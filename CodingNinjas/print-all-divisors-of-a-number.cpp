@@ -1,22 +1,17 @@
-#include <bits/stdc++.h>
-#include <iostream>
-
-using namespace std;
-
-void printDivisors(int n)
+vector<int> printDivisors(int n)
 {
-    for (int i = 1; i <= n; i++)
+
+    vector<int> ans;
+    for (int i = 1; i * i <= n; i++)
     {
-        if (n % i == 0)
-            cout << i << ' ';
+        if (!(n % i))
+        {
+            ans.push_back(i);
+            if (i * i < n)
+                ans.push_back(n / i);
+        }
     }
-}
 
-int main()
-{
-    int n;
-    cin >> n;
-
-    printDivisors(n);
-    return 0;
+    sort(ans.begin(), ans.end());
+    return ans;
 }
